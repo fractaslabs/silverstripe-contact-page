@@ -1,0 +1,12 @@
+hr:
+  ContactPage:
+    ERRORMESSAGE: 'Dogodila se greška. Molimo probajte ponovno kasnije.'
+    FIRSTNAME: 'Ime'
+    LASTNAME: 'Prezime'
+    EMAIL: 'Email'
+    PHONE: 'Telefon'
+    DESCRIPTION: 'Poruka'
+    URL: 'Link'
+    COMMENT: 'Komentar'
+    APPLY: 'Pošalji'
+    FORMMESSAGEGOOD: 'Vaša poruka je poslana. Hvala!'

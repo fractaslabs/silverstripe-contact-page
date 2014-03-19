@@ -1,0 +1,12 @@
+en:
+  ContactPage:
+    ERRORMESSAGE: 'Something went wrong with form submission. Please try again later.'
+    FIRSTNAME: 'First Name'
+    LASTNAME: 'Last Name'
+    EMAIL: 'Email'
+    PHONE: 'Phone'
+    DESCRIPTION: 'Message'
+    URL: 'Url'
+    COMMENT: 'Comment'
+    APPLY: 'Send'
+    FORMMESSAGEGOOD: 'Your inquiry has beed submitted. Thanks!'

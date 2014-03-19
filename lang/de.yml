@@ -1,0 +1,12 @@
+de:
+  ContactPage:
+    ERRORMESSAGE: 'Etwas ist schief gelaufen mit Formular-Vorlage. Bitte versuchen Sie es später noch einmal.'
+    FIRSTNAME: 'Vorname'
+    LASTNAME: 'Nachname'
+    EMAIL: 'Email'
+    PHONE: 'Telefon'
+    DESCRIPTION: 'Nachricht'
+    URL: 'Url'
+    COMMENT: 'Kommentar'
+    APPLY: 'Senden'
+    FORMMESSAGEGOOD: 'Ihre Anfrage wurde eingereicht beed. Vielen Dank!'

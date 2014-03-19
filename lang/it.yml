@@ -1,0 +1,12 @@
+it:
+  ContactPage:
+    ERRORMESSAGE: 'Qualcosa è andato storto con il modulo di presentazione. Riprovare più tardi.'
+    FIRSTNAME: 'Nome'
+    LASTNAME: 'Cognome'
+    EMAIL: 'Email'
+    PHONE: 'Telefono'
+    DESCRIPTION: 'Messaggio'
+    URL: 'Url'
+    COMMENT: 'Commento'
+    APPLY: 'Inviare'
+    FORMMESSAGEGOOD: 'La tua richiesta è beed presentato. Grazie!'
