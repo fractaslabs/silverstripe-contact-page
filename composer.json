@@ -1,0 +1,22 @@
+{
+    "name": "jelicanin/silverstripe-contact-page",
+    "description": "Simple & configurable SilverStripe module to notify admin on contact form submission",
+    "type": "silverstripe-module",
+    "homepage": "http://github.com/jelicanin/silverstripe-contact-page",
+    "keywords": ["silverstripe", "cookie", "contact-page", "contact", "module", "cms"],
+    "authors": [{
+        "name": "Milan jelicanin",
+        "email": "milan.jelicanin@fractas.com"
+    }],
+    "support": {
+        "issues": "http://github.com/jelicanin/silverstripe-contact-page/issues"
+    },
+    "require": {
+        "silverstripe/cms": "~3.0",
+        "silverstripe/framework": "~3.0"
+    },
+    "extra": {
+        "installer-name": "silverstripe-contact-page"
+    },
+    "target-dir": "contact-page"
+}
