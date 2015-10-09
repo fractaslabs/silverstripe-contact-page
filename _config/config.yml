@@ -1,0 +1,9 @@
+---
+Name: contact-page
+Before: 'mysite/*'
+After: 'framework/*','cms/*'
+---
+
+ContentController:
+  extensions:
+    - ContactInquiryController
