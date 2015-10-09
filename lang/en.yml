@@ -1,11 +1,16 @@
 en:
   ContactPage:
     ERRORMESSAGE: 'Something went wrong with form submission. Please try again later.'
-    FIRSTNAME: 'First Name'
-    LASTNAME: 'Last Name'
+    FIRSTNAME: 'First name'
+    FIRSTNAMEPLACEHOLDER: 'Your first name'
+    LASTNAME: 'Last name'
+    LASTNAMEPLACEHOLDER: 'Your last name'
     EMAIL: 'Email'
+    EMAILPLACEHOLDER: 'Your email adress'
     PHONE: 'Phone'
+    PHONEPLACEHOLDER: 'Your phone number'
     DESCRIPTION: 'Message'
+    DESCRIPTIONPLACEHOLDER: 'Your message for us'
     URL: 'Url'
     COMMENT: 'Comment'
     APPLY: 'Send'
