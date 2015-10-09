@@ -8,6 +8,7 @@ class ContactInquiry Extends DataObject {
 		"Email" => "Varchar(255)",
 		"Phone" => "Varchar(255)",
 		"Locale" => "Varchar(255)",
+		"Ref" => "Varchar(255)",
 		"Description" => "Text",
 		"AdminComment" => "Text",
 		'Status' => "Enum('New, Opened, Answered, Spam, Archived', 'New')",
@@ -20,7 +21,7 @@ class ContactInquiry Extends DataObject {
 	private static $casting = array(
 		"Title" => "Varchar(255)"
 	);
-	
+
 	private static $defaults = array(
 		'Status' => 'New'
 	);
@@ -57,6 +58,7 @@ class ContactInquiry Extends DataObject {
 	public function FullName() {
 		return $this->getFullName();
 	}
+
 	public function getTitle() {
 		return $this->getFullName() .' / '. $this->Status .' / '. $this->Created;
 	}
@@ -69,30 +71,6 @@ class ContactInquiry Extends DataObject {
 		return singleton('ContactInquiry')->dbObject('Status')->enumValues(false);
 	}
 
-	public static function get_stafpages() {
-		return StaffPage::get()->map();
-	}
-
-    public function canView($member = null) {
-        if ($member == null && !$member = Member::currentUser()) return false;
-        if(($member->inGroup('administrators', true) || $member->inGroup('content-authors', true))) return true;
-        if($member->inGroup($this->Group()->ID, true)) return true;
-
-        return false;
-    }
-
-    public function canEdit($member = false) {
-        if ($member == null && !$member = Member::currentUser()) return false;
-        if(($member->inGroup('administrators', true) || $member->inGroup('content-authors', true))) return true;
-        if($member->inGroup($this->Group()->ID, true)) return true;
-
-        return false;
-    }
-
-    public function canDelete($member = null) {
-        return false;
-    }
-    
 	public function getCMSFields(){
 		$fields = new FieldList(new TabSet('Root', new Tab('Main')));
 		$fields->removeByName("Sort");
@@ -102,11 +80,12 @@ class ContactInquiry Extends DataObject {
 		$tabName = singleton("ContactInquiry")->singular_name();
 		$fields->addFieldsToTab('Root.Main', array(
 			new HeaderField("$tabName details"),
-			$dropFieldStatus,			
+			$dropFieldStatus,
 			new ReadOnlyField('FirstName', 'First Name'),
 			new ReadOnlyField('LastName', 'Last Name'),
 			new ReadOnlyField('Email', 'Email'),
 			new ReadOnlyField('Phone', 'Phone'),
+			new ReadOnlyField('Ref', 'Referal'),
 			new ReadOnlyField('Locale', 'Locale'),
 			new ReadOnlyField('Created', 'Created'),
 			new ReadOnlyField('Description', 'Description'),
@@ -118,18 +97,20 @@ class ContactInquiry Extends DataObject {
 
 	function onBeforeWrite() {
 		parent::onBeforeWrite();
-		
 	}
 
 	public function canView($member = null) {
 		return true;
 	}
+
 	public function canCreate($member = null) {
 		return true;
 	}
+
 	public function canEdit($member = null) {
 		return true;
 	}
+
 	public function canDelete($member = null) {
 		return true;
 	}
