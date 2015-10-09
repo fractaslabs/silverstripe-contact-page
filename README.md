@@ -2,21 +2,22 @@
 *Simple & configurable SilverStripe plugin to notify admin on contact form submission
 
 ##Maintainer Contacts
-*  Milan [dot] Jelicanin [at] Fractas [dot] com
+*  Milan Jelicanin [at] Fractas.com
 
 
 ##Requirements
 * SilverStripe 3
 * silverstripe-bootstrap-forms
+* silverstripe-zenvalidator
 
 
 ##Installation Instructions
 
 1. Place this directory in the root of your SilverStripe installation, rename the folder 'contact-page'.
 2. Visit yoursite.com/dev/build?flush=1 to rebuild the database.
-3. Visit CMS and create new 'Contact Us' Page type 'ContactPage' and customize mail settings and messages.
-4. Check all messages in CMS section Contact Inq.
-5. Use CSS to hide Form Fields 'Url' and 'Comment', it's simple anti-spam honey-pot.
+3. Visit yoursite.com/admin/pages/ and create Contact Page.
+4. Set up Mail From and Mail To adresses and enter Mail Subject on tab Mail.
+5. On tab "On Submision" enter Success Title and Success Text, optionaly add Image or Content.
 
 
 ##Known Issues
