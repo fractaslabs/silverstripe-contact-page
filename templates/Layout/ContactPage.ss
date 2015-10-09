@@ -1,14 +1,8 @@
-<div class="page-header">
-	<div class="container">
-		<div class="row">
-			<div class="span12"><% include BreadCrumbs %></div>
-			<h1 class="span12">$Title</h1>
-		</div>
+<div class="row">
+	<div class="col-md-12">
+		<% include PageHeader %>
 	</div>
-</div>
-<div class="container">
-	<div class="row contact-page">
-		<div class="span7">
+	<div class="col-sm-8 form">
 		<% if Action = success %>
 			<h2>$SuccessTitle</h2>
 		    $SuccessText
@@ -16,21 +10,19 @@
 			<div class="message required">$ErrorMessage</div>
 		<% else %>
 			$SideContent
-			$ContactForm
+			$ContactInquiryForm
 		<% end_if %>
-		</div>
-		<aside class="span5 contact-info">
+	</div>
+	<% if Content || Image %>
+	<div class="col-sm-4 contact-info">
+		<div class="content">
 			$Content
 			<% if Image %>
-				<% loop Image %>
-				<div class="contact-img">
-					<% loop setWidth(280) %>
-						<img src="$URL" alt="$CurrentPage.Title" rel="art" />
-					<% end_loop %>
-				<% end_loop %>
-				</div>
+			<div class="contact-img">
+				<% with Image %><img src="$setWidth(280).URL" alt="$CurrentPage.Title" /><% end_with %>
+			</div>
 			<% end_if %>
-		</aside>
-		<div class="clearfix"></div>
+		</div>
 	</div>
+	<% end_if %>
 </div>
