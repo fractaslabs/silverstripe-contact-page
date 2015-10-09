@@ -1,6 +1,0 @@
----
-Name: contact-page
-Before: 'mysite/*'
-After: 'framework/*','cms/*'
----
-
