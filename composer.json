@@ -16,7 +16,6 @@
         "silverstripe/framework": "~3.0"
     },
     "extra": {
-        "installer-name": "silverstripe-contact-page"
-    },
-    "target-dir": "contact-page"
+        "installer-name": "contact-page"
+    }
 }
