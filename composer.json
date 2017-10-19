@@ -7,14 +7,19 @@
     "license": "BSD-3-Clause",
     "authors": [{
         "name": "Milan jelicanin",
-        "email": "milan.jelicanin@fractas.com"
+        "email": "milan.jelicanin@fractas.com",
+        "homepage": "https://www.fractas.com/"
     }],
     "support": {
         "issues": "http://github.com/fractaslabs/silverstripe-contact-page/issues"
     },
     "require": {
         "silverstripe/cms": "~3.0",
-        "silverstripe/framework": "~3.0"
+        "silverstripe/framework": "~3.0",
+        "sheadawson/silverstripe-zenvalidator": "^1.0"
+    },
+    "suggests": {
+        "unclecheese/bootstrap-forms": "Adds an Boostrap form field extension following rules of this front-end framework"
     },
     "extra": {
         "installer-name": "contact-page"
