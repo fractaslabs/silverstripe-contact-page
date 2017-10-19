@@ -16,10 +16,8 @@
     "require": {
         "silverstripe/cms": "~3.0",
         "silverstripe/framework": "~3.0",
-        "sheadawson/silverstripe-zenvalidator": "^1.0"
-    },
-    "suggests": {
-        "unclecheese/bootstrap-forms": "Adds an Boostrap form field extension following rules of this front-end framework"
+        "sheadawson/silverstripe-zenvalidator": "^1.0",
+        "unclecheese/bootstrap-forms": "^1.0"
     },
     "extra": {
         "installer-name": "contact-page"
