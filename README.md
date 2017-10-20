@@ -10,7 +10,8 @@ Simple & configurable SilverStripe plugin to notify admin on contact form submis
 
 ## Requirements
 * SilverStripe 3 CMS & Framework
-* Silverstripe Zenvalidator
+* [Silverstripe Zenvalidator](https://github.com/sheadawson/silverstripe-zenvalidator)
+* [SilverStripe Bootstrap Forms](https://github.com/unclecheese/silverstripe-bootstrap-forms/)
 
 
 ## Installation Instructions
