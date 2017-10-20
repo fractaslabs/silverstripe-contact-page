@@ -26,6 +26,10 @@ Simple & configurable SilverStripe plugin to notify admin on contact form submis
  * On tab "On Submision" enter validation Success Title and Success Text, optionaly add Image or Content.
 
 
+## User guide
+User guide in [available here](https://github.com/fractaslabs/silverstripe-contact-page/blob/master/docs/en/userguide.md)
+
+
 ## Bugtracker
 Bugs are tracked on [github.com](https://github.com/fractaslabs/silverstripe-contact-page/issues)
 
