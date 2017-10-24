@@ -1,7 +1,9 @@
 <div class="row">
 	<div class="col-md-12">
-		<% include PageHeader %>
-	</div>
+        <div class="page-header">
+            <h1 class="page-title"></h1>
+        </div>
+    </div>
 	<div class="col-sm-8 form">
 		<% if Action = success %>
 			<h2>$SuccessTitle</h2>
@@ -19,7 +21,7 @@
 			$Content
 			<% if Image %>
 			<div class="contact-img">
-				<% with Image %><img src="$setWidth(280).URL" alt="$CurrentPage.Title" /><% end_with %>
+				<% with Image %><img src="$setWidth(280).URL" alt="$Title"><% end_with %>
 			</div>
 			<% end_if %>
 		</div>
