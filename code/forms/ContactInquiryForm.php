@@ -73,7 +73,6 @@ class ContactInquiryForm extends BootstrapForm
         if ($this->extend('updateActions', $actions) !== null) {
             $this->setActions($actions);
         }
-        // if($this->extend('updateValidator', $requiredFields) !== null) {$this->setValidator($requiredFields);}
 
         $oldData = Session::get("FormInfo.{$this->FormName()}.data");
         if ($oldData && (is_array($oldData) || is_object($oldData))) {
@@ -93,28 +92,37 @@ class ContactInquiryForm extends BootstrapForm
         $SQLData = Convert::raw2sql($data);
         $attrs = $form->getAttributes();
 
+        /** 
+         * Most probably spam - terminate silently
+         */
         if ($SQLData['Comment'] != '' || $SQLData['Url'] != '') {
-            // most probably spam - terminate silently
             Director::redirect(Director::baseURL(). $this->URLSegment . "/success");
             return;
         }
 
         $item = new ContactInquiry();
         $form->saveInto($item);
-        // $form->sessionMessage(_t("ContactPage.FORMMESSAGEGOOD", "Your inquiry has been submitted. Thanks!"), 'good');
         $item->write();
 
         $mailFrom =  $this->currController->MailFrom ? $this->currController->MailFrom : $SQLData['Email'];
         $mailTo = $this->currController->MailTo ? $this->currController->MailTo : Email::getAdminEmail();
         $mailSubject = $this->currController->MailSubject ? ($this->currController->MailSubject  .' - '. $SQLData['Ref']) : _t('ContactPage.SUBJECT', '[web] New contact inquiry - ') .' '. $data['Ref'];
 
+        /** 
+         * Send Email notification to site administrator or
+         * to email specified in MailTo field
+         */
         $email = new Email($mailFrom, $mailTo, $mailSubject);
         $email->replyTo($SQLData['Email']);
         $email->setTemplate("ContactInquiry");
         $email->populateTemplate($SQLData);
         $email->send();
 
-        // $this->controller->redirectBack();
+        /** 
+         * Handle validation messages
+         * Error message is presented on ContactPage.ss layout as
+         * a variable $ErrorMessage
+         */
         if ($email->send()) {
             $this->controller->redirect($this->controller->Link() . "success");
         } else {
@@ -136,7 +144,6 @@ class ContactInquiryForm extends BootstrapForm
 
 class ContactInquiryForm_Validator extends RequiredFields
 {
-
     public function php($data)
     {
         $this->form->saveDataToSession();
