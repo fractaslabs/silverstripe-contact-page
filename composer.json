@@ -19,6 +19,9 @@
         "sheadawson/silverstripe-zenvalidator": "^1.0",
         "unclecheese/bootstrap-forms": "^1.0"
     },
+    "suggest": {
+        "fractaslabs/silverstripe-googleanalytics": "Module that adds a ability to add multiple Google Analytics property IDs"
+    },
     "extra": {
         "installer-name": "contact-page"
     }
