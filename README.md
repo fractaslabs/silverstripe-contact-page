@@ -6,6 +6,7 @@ Simple & configurable SilverStripe plugin to notify admin on contact form submis
 
 ## Maintainer Contacts
 *  Milan Jelicanin [at] Fractas.com
+*  Petar Simic [at] Fractas.com
 
 
 ## Requirements
@@ -18,7 +19,7 @@ Simple & configurable SilverStripe plugin to notify admin on contact form submis
 
  * Download a release of this module and place this directory in the root of your SilverStripe installation and rename the folder 'contact-page' OR better way install it via Composer:
  ```
- composer require "fractas/silverstripe-contact-page" "^1.0"
+ composer require "fractas/contactpage" "^1.0"
  ``` 
  * Visit yoursite.com/dev/build?flush=1 to rebuild the database.
  * Visit yoursite.com/admin/pages/ and create Contact Page.
@@ -27,7 +28,7 @@ Simple & configurable SilverStripe plugin to notify admin on contact form submis
 
 
 ## User guide
-User guide in [available here](https://github.com/fractaslabs/silverstripe-contact-page/blob/master/docs/en/userguide.md)
+User guide in [available here](https://github.com/fractaslabs/silverstripe-contact-page/blob/3.0/docs/en/userguide.md)
 
 
 ## Bugtracker
