@@ -1,7 +1,7 @@
 {
     "name": "fractas/contactpage",
     "description": "Simple & configurable SilverStripe module to notify admin on contact form submission",
-    "type": "silverstripe-module",
+    "type": "silverstripe-vendormodule",
     "homepage": "http://github.com/fractaslabs/silverstripe-contact-page",
     "keywords": ["silverstripe", "contact-page", "contact", "module", "cms"],
     "license": "BSD-3-Clause",
