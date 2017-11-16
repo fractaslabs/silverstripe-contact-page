@@ -1,28 +1,32 @@
 {
-    "name": "fractas/silverstripe-contact-page",
+    "name": "fractas/contactpage",
     "description": "Simple & configurable SilverStripe module to notify admin on contact form submission",
     "type": "silverstripe-module",
     "homepage": "http://github.com/fractaslabs/silverstripe-contact-page",
     "keywords": ["silverstripe", "contact-page", "contact", "module", "cms"],
     "license": "BSD-3-Clause",
-    "authors": [{
-        "name": "Milan jelicanin",
-        "email": "milan.jelicanin@fractas.com",
-        "homepage": "https://www.fractas.com/"
-    }],
     "support": {
         "issues": "http://github.com/fractaslabs/silverstripe-contact-page/issues"
     },
+    "authors": [{
+        "name": "Milan Jelicanin",
+        "email": "milan.jelicanin@fractas.com",
+        "homepage": "https://www.fractas.com/"
+    }, {
+        "name": "Petar Simic",
+        "email": "petar.simic@fractas.com",
+        "homepage": "https://www.fractas.com/"
+    }],
     "require": {
-        "silverstripe/cms": "~3.0",
-        "silverstripe/framework": "~3.0",
-        "sheadawson/silverstripe-zenvalidator": "^1.0",
-        "unclecheese/bootstrap-forms": "^1.0"
+        "silverstripe/cms": "~4.0",
+        "silverstripe/framework": "~4.0"
     },
     "suggest": {
-        "fractaslabs/silverstripe-googleanalytics": "Module that adds a ability to add multiple Google Analytics property IDs"
+        "fractas/googleanalytics": "Module that adds a ability to add multiple Google Analytics property IDs"
     },
-    "extra": {
-        "installer-name": "contact-page"
+    "autoload": {
+        "psr-4": {
+            "Fractas\\ContactPage\\": "src/"
+        }
     }
 }

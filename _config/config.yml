@@ -1,9 +1,8 @@
 ---
 Name: contact-page
 Before: 'mysite/*'
-After: 'framework/*','cms/*'
+After: ['framework/*','cms/*']
 ---
-
-ContentController:
+SilverStripe\CMS\Controllers\ContentController:
   extensions:
-    - ContactInquiryController
+    - Fractas\ContactPage\ContactInquiryController

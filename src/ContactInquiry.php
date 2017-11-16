@@ -1,60 +1,71 @@
 <?php
 
+namespace Fractas\ContactPage;
+
+use SilverStripe\Control\Email\Email;
+use SilverStripe\Forms\Tab;
+use SilverStripe\Forms\TabSet;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\DropdownField;
+use SilverStripe\Forms\HeaderField;
+use SilverStripe\Forms\TextareaField;
+use SilverStripe\Forms\ReadOnlyField;
+use SilverStripe\ORM\DataObject;
+
 class ContactInquiry extends DataObject
 {
-
     private static $db = array(
-        "FirstName" => "Varchar(255)",
-        "LastName" => "Varchar(255)",
-        "Email" => "Varchar(255)",
-        "Phone" => "Varchar(255)",
-        "Locale" => "Varchar(255)",
-        "Ref" => "Varchar(255)",
-        "Description" => "Text",
-        "AdminComment" => "Text",
+        'FirstName' => 'Varchar(255)',
+        'LastName' => 'Varchar(255)',
+        'Email' => 'Varchar(255)',
+        'Phone' => 'Varchar(255)',
+        'Locale' => 'Varchar(255)',
+        'Ref' => 'Varchar(255)',
+        'Description' => 'Text',
+        'AdminComment' => 'Text',
         'Status' => "Enum('New, Opened, Answered, Spam, Archived', 'New')",
-        "Sort" => "Int"
+        'Sort' => 'Int',
     );
 
     private static $has_one = array(
     );
 
     private static $casting = array(
-        "Title" => "Varchar(255)"
+        'Title' => 'Varchar(255)',
     );
 
     private static $defaults = array(
-        'Status' => 'New'
+        'Status' => 'New',
     );
 
     private static $singular_name = 'Contact Inquiry';
     private static $plural_name = 'Contact Inquiries';
     private static $default_sort = 'Sort, ID Desc';
 
-    public static $searchable_fields = array(
-        "FirstName",
-        "LastName",
-        "Email",
-        "Phone",
-        "Status"
+    private static $searchable_fields = array(
+        'FirstName',
+        'LastName',
+        'Email',
+        'Phone',
+        'Status',
     );
 
-    public static $summary_fields = array(
-        "FullName",
-        "Email",
-        "Status",
-        "Locale",
-        "Created"
+    private static $summary_fields = array(
+        'FullName',
+        'Email',
+        'Status',
+        'Locale',
+        'Created',
     );
 
-    public static $field_labels = array(
-        "FullName" => "Full Name",
-        "Sort" => "Sort Index",
+    private static $field_labels = array(
+        'FullName' => 'Full Name',
+        'Sort' => 'Sort Index',
     );
 
     public function getFullName()
     {
-        return $this->FirstName .' '. $this->LastName;
+        return $this->FirstName.' '.$this->LastName;
     }
 
     public function FullName()
@@ -64,7 +75,7 @@ class ContactInquiry extends DataObject
 
     public function getTitle()
     {
-        return $this->getFullName() .' / '. $this->Status .' / '. $this->Created;
+        return $this->getFullName().' / '.$this->Status.' / '.$this->Created;
     }
 
     public function Title()
@@ -74,19 +85,19 @@ class ContactInquiry extends DataObject
 
     public static function get_contactinquiry_status_options()
     {
-        return singleton('ContactInquiry')->dbObject('Status')->enumValues(false);
+        return singleton(self::class)->dbObject('Status')->enumValues(false);
     }
 
     public function getCMSFields()
     {
         $fields = new FieldList(new TabSet('Root', new Tab('Main')));
-        $fields->removeByName("Sort");
+        $fields->removeByName('Sort');
 
         $dropFieldStatus = new DropdownField('Status', 'Status', self::get_contactinquiry_status_options());
 
-        $tabName = singleton("ContactInquiry")->singular_name();
+        $tabName = singleton(self::class)->singular_name();
         $fields->addFieldsToTab('Root.Main', array(
-            new HeaderField("$tabName details"),
+            new HeaderField('HeaderDetails', "$tabName details"),
             $dropFieldStatus,
             new ReadOnlyField('FirstName', 'First Name'),
             new ReadOnlyField('LastName', 'Last Name'),
@@ -96,7 +107,7 @@ class ContactInquiry extends DataObject
             new ReadOnlyField('Locale', 'Locale'),
             new ReadOnlyField('Created', 'Created'),
             new ReadOnlyField('Description', 'Description'),
-            new TextareaField('AdminComment', 'Admin Comment')
+            new TextareaField('AdminComment', 'Admin Comment'),
         ));
 
         return $fields;
@@ -107,22 +118,22 @@ class ContactInquiry extends DataObject
         parent::onBeforeWrite();
     }
 
-    public function canView($member = null)
+    public function canView($member = null, $context = [])
     {
         return true;
     }
 
-    public function canCreate($member = null)
+    public function canEdit($member = null, $context = [])
     {
         return true;
     }
 
-    public function canEdit($member = null)
+    public function canCreate($member = null, $context = [])
     {
         return true;
     }
 
-    public function canDelete($member = null)
+    public function canDelete($member = null, $context = [])
     {
         return true;
     }
