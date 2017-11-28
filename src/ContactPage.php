@@ -32,6 +32,8 @@ class ContactPage extends Page
     private static $has_one = array(
         'Image' => Image::class,
     );
+    
+    private static $owns = ['Image'];
 
     private static $default_sort = 'ID DESC';
 
