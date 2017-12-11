@@ -1,8 +1,12 @@
 # SilverStripe Contact Page Module
+[![Latest Stable Version](https://poser.pugx.org/fractas/contactpage/v/stable)](https://packagist.org/packages/fractas/contactpage)
+[![Latest Unstable Version](https://poser.pugx.org/fractas/contactpage/v/unstable)](https://packagist.org/packages/fractas/contactpage)
+[![Total Downloads](https://poser.pugx.org/fractas/contactpage/downloads)](https://packagist.org/packages/fractas/contactpage)
+[![License](https://poser.pugx.org/fractas/contactpage/license)](https://packagist.org/packages/fractas/contactpage)
 
 ## Overview
 
-Simple & configurable SilverStripe plugin to notify admin on contact form submission
+Simple & configurable SilverStripe module to notify CMS Admin on Contact form submission
 
 ## Maintainer Contacts
 
@@ -36,4 +40,4 @@ Bugs are tracked on [github.com](https://github.com/fractaslabs/silverstripe-con
 
 ## Licence
 
-- See [Licence](https://github.com/fractaslabs/silverstripe-contact-page/blob/master/LICENSE)
+See [Licence](https://github.com/fractaslabs/silverstripe-contact-page/blob/master/LICENSE)
