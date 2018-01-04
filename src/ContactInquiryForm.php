@@ -3,18 +3,18 @@
 namespace Fractas\ContactPage;
 
 use SilverStripe\Control\Controller;
-use SilverStripe\Forms\TextField;
+use SilverStripe\Control\Director;
 use SilverStripe\Control\Email\Email;
-use SilverStripe\Forms\EmailField;
-use SilverStripe\Forms\TextareaField;
-use SilverStripe\Forms\HiddenField;
-use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\FormAction;
-use SilverStripe\Forms\Form;
-use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Convert;
-use SilverStripe\Control\Director;
+use SilverStripe\Forms\EmailField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\Form;
+use SilverStripe\Forms\FormAction;
+use SilverStripe\Forms\HiddenField;
+use SilverStripe\Forms\RequiredFields;
+use SilverStripe\Forms\TextareaField;
+use SilverStripe\Forms\TextField;
 
 class ContactInquiryForm extends Form
 {
@@ -25,7 +25,7 @@ class ContactInquiryForm extends Form
         $this->currController = $controller;
 
         $fields = new FieldList(
-            array(
+            [
                 TextField::create('FirstName')
                     ->setTitle(_t('ContactPage.FIRSTNAME', 'First Name'))
                     ->setAttribute('placeholder', _t('ContactPage.FIRSTNAMEPLACEHOLDER', 'Your First Name'))
@@ -70,7 +70,7 @@ class ContactInquiryForm extends Form
 
                 HiddenField::create('Ref')->setValue($this->currController->Title),
                 HiddenField::create('Locale')->setValue($this->currController->Locale),
-            )
+            ]
         );
 
         $actions = new FieldList(
@@ -107,10 +107,8 @@ class ContactInquiryForm extends Form
         $SQLData = Convert::raw2sql($data);
         $attrs = $form->getAttributes();
 
-        /*
-         * Most probably spam - terminate silently
-         */
-        if ('' != $SQLData['Comment'] || '' != $SQLData['Url']) {
+        // Most probably spam - terminate silently
+        if ('' !== $SQLData['Comment'] || '' !== $SQLData['Url']) {
             Director::redirect(Director::baseURL().$this->URLSegment.'/success');
 
             return;

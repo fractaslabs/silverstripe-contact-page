@@ -3,18 +3,18 @@
 namespace Fractas\ContactPage;
 
 use SilverStripe\Control\Email\Email;
+use SilverStripe\Forms\DropdownField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\HeaderField;
+use SilverStripe\Forms\ReadOnlyField;
 use SilverStripe\Forms\Tab;
 use SilverStripe\Forms\TabSet;
-use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\DropdownField;
-use SilverStripe\Forms\HeaderField;
 use SilverStripe\Forms\TextareaField;
-use SilverStripe\Forms\ReadOnlyField;
 use SilverStripe\ORM\DataObject;
 
 class ContactInquiry extends DataObject
 {
-    private static $db = array(
+    private static $db = [
         'FirstName' => 'Varchar(255)',
         'LastName' => 'Varchar(255)',
         'Email' => 'Varchar(255)',
@@ -25,43 +25,42 @@ class ContactInquiry extends DataObject
         'AdminComment' => 'Text',
         'Status' => "Enum('New, Opened, Answered, Spam, Archived', 'New')",
         'Sort' => 'Int',
-    );
+    ];
 
-    private static $has_one = array(
-    );
+    private static $has_one = [];
 
-    private static $casting = array(
+    private static $casting = [
         'Title' => 'Varchar(255)',
-    );
+    ];
 
-    private static $defaults = array(
+    private static $defaults = [
         'Status' => 'New',
-    );
+    ];
 
     private static $singular_name = 'Contact Inquiry';
     private static $plural_name = 'Contact Inquiries';
     private static $default_sort = 'Sort, ID Desc';
 
-    private static $searchable_fields = array(
+    private static $searchable_fields = [
         'FirstName',
         'LastName',
         'Email',
         'Phone',
         'Status',
-    );
+    ];
 
-    private static $summary_fields = array(
+    private static $summary_fields = [
         'FullName',
         'Email',
         'Status',
         'Locale',
         'Created',
-    );
+    ];
 
-    private static $field_labels = array(
+    private static $field_labels = [
         'FullName' => 'Full Name',
         'Sort' => 'Sort Index',
-    );
+    ];
 
     public function getFullName()
     {
@@ -96,8 +95,8 @@ class ContactInquiry extends DataObject
         $dropFieldStatus = new DropdownField('Status', 'Status', self::get_contactinquiry_status_options());
 
         $tabName = singleton(self::class)->singular_name();
-        $fields->addFieldsToTab('Root.Main', array(
-            new HeaderField('HeaderDetails', "$tabName details"),
+        $fields->addFieldsToTab('Root.Main', [
+            new HeaderField('HeaderDetails', "${tabName} details"),
             $dropFieldStatus,
             new ReadOnlyField('FirstName', 'First Name'),
             new ReadOnlyField('LastName', 'Last Name'),
@@ -108,7 +107,7 @@ class ContactInquiry extends DataObject
             new ReadOnlyField('Created', 'Created'),
             new ReadOnlyField('Description', 'Description'),
             new TextareaField('AdminComment', 'Admin Comment'),
-        ));
+        ]);
 
         return $fields;
     }

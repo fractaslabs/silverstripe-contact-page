@@ -11,7 +11,7 @@ class ContactPageController extends PageController
         'error',
     );
 
-    protected function init()
+    public function init()
     {
         parent::init();
     }

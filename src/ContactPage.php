@@ -2,12 +2,12 @@
 
 namespace Fractas\ContactPage;
 
-use SilverStripe\Assets\Image;
-use SilverStripe\Forms\TextField;
-use SilverStripe\Forms\TextareaField;
-use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
-use SilverStripe\AssetAdmin\Forms\UploadField;
 use Page;
+use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Assets\Image;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+use SilverStripe\Forms\TextareaField;
+use SilverStripe\Forms\TextField;
 
 /**
  * Defines the ContactPage page type.
@@ -20,30 +20,30 @@ class ContactPage extends Page
     private static $plural_name = 'Contact Pages';
     private static $description = 'Page with contact Form and contact details';
 
-    private static $db = array(
+    private static $db = [
         'MailFrom' => 'Varchar(255)',
         'MailTo' => 'Varchar(255)',
         'MailSubject' => 'Varchar(255)',
         'SuccessTitle' => 'Varchar(255)',
         'SuccessText' => 'Text',
         'SideContent' => 'HTMLText',
-    );
+    ];
 
-    private static $has_one = array(
+    private static $has_one = [
         'Image' => Image::class,
-    );
-    
+    ];
+
     private static $owns = ['Image'];
 
     private static $default_sort = 'ID DESC';
 
-    private static $defaults = array(
+    private static $defaults = [
         'MailFrom' => 'you@example.com',
         'MailTo' => 'you@example.com',
         'MailSubject' => 'New contact form inquiry',
         'SuccessTitle' => 'Thank you for submitting the contact form!',
         'SuccessText' => 'We will contact you back asap! Cheers :)',
-    );
+    ];
 
     public function getCMSFields()
     {

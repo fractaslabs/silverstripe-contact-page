@@ -6,9 +6,9 @@ use SilverStripe\Core\Extension;
 
 class ContactInquiryController extends Extension
 {
-    private static $allowed_actions = array(
+    private static $allowed_actions = [
         'ContactInquiryForm',
-    );
+    ];
 
     public function ContactInquiryForm()
     {
