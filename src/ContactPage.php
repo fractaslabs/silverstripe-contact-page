@@ -56,7 +56,7 @@ class ContactPage extends Page
         $fields->addFieldToTab('Root.OnSubmission', new TextField('SuccessTitle', 'Success Title'));
         $fields->addFieldToTab('Root.OnSubmission', new TextareaField('SuccessText', 'Success Text'));
 
-        $fields->addFieldToTab('Root.Images', new UploadField(Image::class, Image::class));
+        $fields->addFieldToTab('Root.Images', new UploadField('Image', 'Image'));
         $fields->addFieldToTab('Root.SideContent', new HtmlEditorField('SideContent', 'Side Content'));
 
         return $fields;
