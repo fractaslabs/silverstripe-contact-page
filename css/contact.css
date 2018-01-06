@@ -1,0 +1,250 @@
+.message.required,
+.error .help-block {
+	color: red;
+	font-size: 11px;
+}
+
+.contact .form fieldset {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+	.contact .form .field {
+		display: block;
+		float: left;
+		padding-left: 15px;
+		padding-right: 15px;
+		min-height: 1px;
+		position: relative;
+		width: 100%;
+		margin-bottom: 15px;
+	}
+
+.contact .content {
+	margin-bottom: 30px;
+	font-size: 16px;
+}
+.contact .content.text-left {
+	text-align: left;
+}
+	.sidecontent > h4 {
+		margin-top: 0;
+		border-bottom: 1px solid #e5e5e5;
+		padding-bottom: 5px;
+	}
+
+.parsley-errors-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+	.parsley-errors-list.filled li {
+		margin-top: 5px;
+		font-size: 11px;
+		font-family: Georgia, serif;
+		font-style: italic;
+		color: red;
+		display: block;
+		float: left;
+	}
+
+.empty {
+	height: 325px;
+	position: relative;
+}
+.contact-wrapper {
+	background-color: #ffffff;
+	padding: 0 15px;
+	box-shadow: 0px 8px 36px 6px rgba(0,0,0,0.05);
+}
+.contact-wrapper.with-blocks {
+	margin-top: -6em;
+}
+	.contact-wrapper .page-header {
+		float: none;
+		margin-top: 0;
+		border: none;
+		margin-bottom: 50px;
+	}
+	.contact-info {
+		background-color: #fe4542;
+		padding: 3em;
+		color: #ffffff;
+	}
+	.contact-info h3 {
+		color: #ffffff;
+		margin-top: 0;
+		text-align: left;
+		font-weight: 400;
+		margin-bottom: 50px;
+	}
+	.contact-info ul {
+		list-style: none;
+		padding-left: 0;
+		color: #ffffff;
+		text-align: left;
+		font-size: 16px;
+	}
+	.contact-info ul li {
+		margin-bottom: 30px;
+	}
+	.contact-info ul li span{
+		width: 50px;
+		display: block;
+		float: left;
+	}
+	.contact-info ul li img {
+		display: inline-block;
+		padding-right: 15px;
+	}
+.contact .form {
+	padding: 3em;
+	background-color: #ffffff;
+}
+	.contact .form h1 {
+		font-size: 34px;
+		text-transform: none;
+		font-weight: 400;
+	}
+	.contact .form .field {
+	    width: 50%;
+	}
+	.contact .form .field label {
+		color: #666666;
+	}
+	.contact .form .field.textarea {
+	    width: 100%;
+	}
+	.contact .form input,
+	.contact .form textarea {
+		border: 1px solid #cccccc;
+		box-shadow: none;
+		border-radius: 0;
+		display: block;
+    width: 100%;
+    padding: 9px 16px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+		transition: border-color ease-in-out .15s;
+		outline: none;
+	}
+	.contact .form input:focus,
+	.contact .form textarea:focus {
+		box-shadow: none;
+		border-color: #999999;
+		outline: none;
+	}
+		.contact .form textarea {
+			height: auto;
+		}
+
+		.contact .form .action {
+			-moz-user-select: none;
+			background-color: transparent;
+			border: 0 none;
+			cursor: pointer;
+			display: inline-block;
+			padding: 10px 20px;
+			text-align: center;
+			vertical-align: middle;
+			white-space: nowrap;
+			-webkit-transition: background-color 0.3s ease-in-out 0s;
+			transition: background-color 0.3s ease-in-out 0s;
+			height: auto;
+			width: auto;
+			font-weight: 600;
+		}
+		.contact .form .action {
+			background-color: #fe4542;
+			float: right;
+			color: #ffffff;
+		}
+			.contact .form .action:hover,
+			.contact .form .action:focus {
+				background-color: #e43e3b;
+			}
+
+		.contact .middle {
+			padding-bottom: 2em;
+			padding-top: 2em;
+		}
+
+.contact .hero.main {
+    padding-top: 130px;
+    padding-right: 380px;
+}
+
+.contact .main-content {
+	margin-bottom: 30px;
+	font-size: 16px;
+	line-height: 1.6;
+	color: #555;
+}
+
+.contact-img-wrapper {}
+
+	.contact-img {
+		background-size: cover;
+		padding-top: 6em;
+		padding-bottom: 9em;
+		position: relative;
+		min-height: 32em;
+	}
+
+		.contact-img > div > * {
+			position: relative;
+			color: #ffffff;
+			z-index: 1;
+		}
+
+		.contact-img::after {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			content: "";
+			display: block;
+			background-color: rgba(0,0,0,0.5);
+		}
+
+		.contact-img-wrapper h1 {
+			margin-bottom: 0.5em;
+			font-size: 40px;
+		}
+
+		.contact-img-wrapper p {
+			font-size: 18px;
+			line-height: 1.5;
+			padding-right: 2em;
+		}
+
+.equal {
+	display:-ms-flexbox;
+	display:-webkit-box;
+	display:flex;
+	-ms-flex-wrap:wrap;
+	flex-wrap:wrap
+}
+
+@media (max-width: 768px) {
+	.contact-info {
+		width: 100%;
+	}
+}
+@media (min-width: 768px) {
+	.contact .content {
+		margin-bottom: 45px;
+		font-size: 20px;
+	}
+
+	.sidecontent { padding-left: 20px; }
+
+	.contact .form .field {width: 50%;}
+
+	.contact .form .field[id="Description"] {width: 100%;}
+}

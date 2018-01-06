@@ -19,10 +19,19 @@
     }],
     "require": {
         "silverstripe/cms": "~4.0",
-        "silverstripe/framework": "~4.0"
+        "silverstripe/framework": "~4.0",
+        "silverstripe/vendor-plugin": "^1.0"
     },
     "suggest": {
         "fractas/googleanalytics": "Module that adds a ability to add multiple Google Analytics property IDs"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.x-dev"
+        },
+        "expose": [
+            "css"
+        ]
     },
     "autoload": {
         "psr-4": {

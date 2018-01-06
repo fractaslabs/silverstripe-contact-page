@@ -3,6 +3,7 @@
 namespace Fractas\ContactPage;
 
 use PageController;
+use SilverStripe\View\Requirements;
 
 class ContactPageController extends PageController
 {
@@ -14,6 +15,8 @@ class ContactPageController extends PageController
     public function init()
     {
         parent::init();
+
+        Requirements::css('fractas/contactpage: css/contact.css');
     }
 
     public function ErrorMessage()

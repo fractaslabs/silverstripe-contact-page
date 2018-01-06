@@ -1,30 +1,23 @@
-<div class="row">
-	<div class="col-md-12">
-        <div class="page-header">
-            <h1 class="page-title">$Title</h1>
-        </div>
-    </div>
-	<div class="col-sm-8 form">
-		<% if Action = success %>
-			<h2>$SuccessTitle</h2>
-		    $SuccessText
-		<% else_if Action = error %>
-			<div class="message required">$ErrorMessage</div>
-		<% else %>
-			$SideContent
-			$ContactInquiryForm
-		<% end_if %>
-	</div>
-	<% if Content || Image %>
-	<div class="col-sm-4 contact-info">
-		<div class="content">
-			$Content
-			<% if Image %>
-			<div class="contact-img">
-				<% with Image %><img src="$setWidth(280).URL" alt="$Title"><% end_with %>
+<% if $ElementalArea %><div class="empty"><% end_if %>
+	<div class="contact-wrapper<% if $ElementalArea || Image %> with-blocks<% end_if %>">
+		<div class="row equal">
+			<div class="col-sm-8 form">
+				<% if Action = success %>
+					<h2>$SuccessTitle</h2>
+				    $SuccessText
+				<% else_if Action = error %>
+					<div class="message required">$ErrorMessage</div>
+				<% else %>
+					$ContactInquiryForm
+				<% end_if %>
+			</div>
+			<% if SideContent %>
+			<div class="col-sm-4 contact-info">
+				<div class="content">
+					$SideContent
+				</div>
 			</div>
 			<% end_if %>
 		</div>
 	</div>
-	<% end_if %>
-</div>
+<% if $ElementalArea %></div><% end_if %>
