@@ -11,8 +11,10 @@ use SilverStripe\Forms\Tab;
 use SilverStripe\Forms\TabSet;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\Security\Permission;
+use SilverStripe\Security\PermissionProvider;
 
-class ContactInquiry extends DataObject
+class ContactInquiry extends DataObject implements PermissionProvider
 {
     private static $db = [
         'FirstName' => 'Varchar(255)',
@@ -124,16 +126,52 @@ class ContactInquiry extends DataObject
 
     public function canEdit($member = null, $context = [])
     {
-        return true;
+        return Permission::check('CONTACTINQUIRY_EDIT');
     }
 
     public function canCreate($member = null, $context = [])
     {
-        return true;
+        return Permission::check('CONTACTINQUIRY_DELETE');
     }
 
-    public function canDelete($member = null, $context = [])
+    public function canCreate($member = null, $context = [])
     {
-        return true;
+        return Permission::check('CONTACTINQUIRY_CREATE');
+    }
+
+    public function providePermissions()
+    {
+        return array(
+            'CONTACTINQUIRY_EDIT' => array(
+                'name' => _t(
+                    __CLASS__ . '.EditPermissionLabel',
+                    'Edit a Contact Inquiry'
+                ),
+                'category' => _t(
+                    __CLASS__ . '.Category',
+                    'Contact Inquiries'
+                ),
+            ),
+            'CONTACTINQUIRY_DELETE' => array(
+                'name' => _t(
+                    __CLASS__ . '.DeletePermissionLabel',
+                    'Delete a Contact Inquiry'
+                ),
+                'category' => _t(
+                    __CLASS__ . '.Category',
+                    'Contact Inquiries'
+                ),
+            ),
+            'CONTACTINQUIRY_CREATE' => array(
+                'name' => _t(
+                    __CLASS__ . '.CreatePermissionLabel',
+                    'Create a Contact Inquiry'
+                ),
+                'category' => _t(
+                    __CLASS__ . '.Category',
+                    'Contact Inquiries'
+                ),
+            )
+        );
     }
 }
