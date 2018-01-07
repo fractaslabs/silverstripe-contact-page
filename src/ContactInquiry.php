@@ -129,7 +129,7 @@ class ContactInquiry extends DataObject implements PermissionProvider
         return Permission::check('CONTACTINQUIRY_EDIT');
     }
 
-    public function canCreate($member = null, $context = [])
+    public function canDelete($member = null, $context = [])
     {
         return Permission::check('CONTACTINQUIRY_DELETE');
     }
