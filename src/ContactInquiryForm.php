@@ -128,8 +128,7 @@ class ContactInquiryForm extends Form
          */
         $email = new Email($mailFrom, $mailTo, $mailSubject);
         $email->setReplyTo($SQLData['Email']);
-        $email->setHTMLTemplate('ContactInquiry');
-        $email->setData($SQLData);
+        $email->setHTMLTemplate('ContactInquiryEmail');
         $email->setData($SQLData);
         $email->send();
 
