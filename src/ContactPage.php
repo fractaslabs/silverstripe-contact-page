@@ -33,6 +33,8 @@ class ContactPage extends Page
         'Image' => Image::class,
     ];
 
+    private static $table_name = 'ContactPage';
+
     private static $owns = ['Image'];
 
     private static $default_sort = 'ID DESC';

@@ -31,6 +31,8 @@ class ContactInquiry extends DataObject implements PermissionProvider
 
     private static $has_one = [];
 
+    private static $table_name = 'ContactInquiry';
+
     private static $casting = [
         'Title' => 'Varchar(255)',
     ];
@@ -144,34 +146,34 @@ class ContactInquiry extends DataObject implements PermissionProvider
         return array(
             'CONTACTINQUIRY_EDIT' => array(
                 'name' => _t(
-                    __CLASS__ . '.EditPermissionLabel',
+                    __CLASS__.'.EditPermissionLabel',
                     'Edit a Contact Inquiry'
                 ),
                 'category' => _t(
-                    __CLASS__ . '.Category',
+                    __CLASS__.'.Category',
                     'Contact Inquiries'
                 ),
             ),
             'CONTACTINQUIRY_DELETE' => array(
                 'name' => _t(
-                    __CLASS__ . '.DeletePermissionLabel',
+                    __CLASS__.'.DeletePermissionLabel',
                     'Delete a Contact Inquiry'
                 ),
                 'category' => _t(
-                    __CLASS__ . '.Category',
+                    __CLASS__.'.Category',
                     'Contact Inquiries'
                 ),
             ),
             'CONTACTINQUIRY_CREATE' => array(
                 'name' => _t(
-                    __CLASS__ . '.CreatePermissionLabel',
+                    __CLASS__.'.CreatePermissionLabel',
                     'Create a Contact Inquiry'
                 ),
                 'category' => _t(
-                    __CLASS__ . '.Category',
+                    __CLASS__.'.Category',
                     'Contact Inquiries'
                 ),
-            )
+            ),
         );
     }
 }
