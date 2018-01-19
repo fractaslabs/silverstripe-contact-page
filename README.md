@@ -17,6 +17,10 @@ Simple & configurable SilverStripe module to notify CMS Admin on Contact form su
 
 - SilverStripe 4 CMS & Framework
 
+## Version info
+The master branch of this module is currently aiming for SilverStripe 4.x compatibility
+- [SilverStripe 3.0+ compatible version](https://github.com/fractaslabs/silverstripe-contact-page/tree/3.0)
+
 ## Installation Instructions
 
 - Download a release of this module and place this directory in the root of your SilverStripe installation and rename the folder 'contact-page' OR better way install it via Composer:
