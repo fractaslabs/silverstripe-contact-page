@@ -16,7 +16,7 @@ class ContactInquiryAdmin extends ModelAdmin
 
     private static $menu_title = 'Contact Inq.';
 
-    private static $menu_icon = 'font-icon-book';
+    private static $menu_icon_class = 'font-icon-book';
 
     public function init()
     {
