@@ -4,12 +4,12 @@
 	font-size: 11px;
 }
 
-.contact .form fieldset {
+.contact-form fieldset {
 	margin-left: -15px;
 	margin-right: -15px;
 }
 
-	.contact .form .field {
+	.contact-form .field {
 		display: block;
 		float: left;
 		padding-left: 15px;
@@ -98,26 +98,26 @@
 		display: inline-block;
 		padding-right: 15px;
 	}
-.contact .form {
+.contact-form {
 	padding: 3em;
 	background-color: #ffffff;
 }
-	.contact .form h1 {
+	.contact-form h1 {
 		font-size: 34px;
 		text-transform: none;
 		font-weight: 400;
 	}
-	.contact .form .field {
+	.contact-form .field {
 	    width: 50%;
 	}
-	.contact .form .field label {
+	.contact-form .field label {
 		color: #666666;
 	}
-	.contact .form .field.textarea {
+	.contact-form .field.textarea {
 	    width: 100%;
 	}
-	.contact .form input,
-	.contact .form textarea {
+	.contact-form input,
+	.contact-form textarea {
 		border: 1px solid #cccccc;
 		box-shadow: none;
 		border-radius: 0;
@@ -132,17 +132,17 @@
 		transition: border-color ease-in-out .15s;
 		outline: none;
 	}
-	.contact .form input:focus,
-	.contact .form textarea:focus {
+	.contact-form input:focus,
+	.contact-form textarea:focus {
 		box-shadow: none;
 		border-color: #999999;
 		outline: none;
 	}
-		.contact .form textarea {
+		.contact-form textarea {
 			height: auto;
 		}
 
-		.contact .form .action {
+		.contact-form .action {
 			-moz-user-select: none;
 			background-color: transparent;
 			border: 0 none;
@@ -158,13 +158,13 @@
 			width: auto;
 			font-weight: 600;
 		}
-		.contact .form .action {
+		.contact-form .action {
 			background-color: #fe4542;
 			float: right;
 			color: #ffffff;
 		}
-			.contact .form .action:hover,
-			.contact .form .action:focus {
+			.contact-form .action:hover,
+			.contact-form .action:focus {
 				background-color: #e43e3b;
 			}
 
@@ -244,7 +244,7 @@
 
 	.sidecontent { padding-left: 20px; }
 
-	.contact .form .field {width: 50%;}
+	.contact-form .field {width: 50%;}
 
-	.contact .form .field[id="Description"] {width: 100%;}
+	.contact-form .field[id="Description"] {width: 100%;}
 }

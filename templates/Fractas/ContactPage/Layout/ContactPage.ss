@@ -1,7 +1,7 @@
 <% if $ElementalArea %><div class="empty"><% end_if %>
 	<div class="contact-wrapper<% if $ElementalArea || Image %> with-blocks<% end_if %>">
 		<div class="row equal">
-			<div class="col-sm-8 form">
+			<div class="col-sm-8 contact-form">
 				<% if Action = success %>
 					<h2>$SuccessTitle</h2>
 				    $SuccessText
