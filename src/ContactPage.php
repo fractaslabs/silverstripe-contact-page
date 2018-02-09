@@ -5,9 +5,11 @@ namespace Fractas\ContactPage;
 use Page;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
+use  SilverStripe\Forms\TreeDropdownField;
 
 /**
  * Defines the ContactPage page type.
@@ -20,6 +22,8 @@ class ContactPage extends Page
     private static $plural_name = 'Contact Pages';
     private static $description = 'Page with contact Form and contact details';
 
+    private static $use_terms_page = false;
+
     private static $db = [
         'MailFrom' => 'Varchar(255)',
         'MailTo' => 'Varchar(255)',
@@ -31,6 +35,7 @@ class ContactPage extends Page
 
     private static $has_one = [
         'Image' => Image::class,
+        'TermsPage' => SiteTree::class,
     ];
 
     private static $table_name = 'ContactPage';
@@ -51,15 +56,23 @@ class ContactPage extends Page
     {
         $fields = parent::getCMSFields();
 
-        $fields->addFieldToTab('Root.Mail', new TextField('MailFrom', 'Mail From'));
-        $fields->addFieldToTab('Root.Mail', new TextField('MailTo', 'Mail To'));
-        $fields->addFieldToTab('Root.Mail', new TextField('MailSubject', 'Mail Subject'));
+        $fields->addFieldToTab('Root.Mail', TextField::create('MailFrom', 'Mail From'));
+        $fields->addFieldToTab('Root.Mail', TextField::create('MailTo', 'Mail To'));
+        $fields->addFieldToTab('Root.Mail', TextField::create('MailSubject', 'Mail Subject'));
 
-        $fields->addFieldToTab('Root.OnSubmission', new TextField('SuccessTitle', 'Success Title'));
-        $fields->addFieldToTab('Root.OnSubmission', new TextareaField('SuccessText', 'Success Text'));
+        $fields->addFieldToTab('Root.SideContent', HtmlEditorField::create('SideContent', 'Side Content'));
 
-        $fields->addFieldToTab('Root.Images', new UploadField('Image', 'Image'));
-        $fields->addFieldToTab('Root.SideContent', new HtmlEditorField('SideContent', 'Side Content'));
+        if ($this->config()->get('use_terms_page')) {
+            $fields->addFieldToTab(
+                'Root.TermsPage',
+                $treedropdownfield = TreeDropdownField::create('TermsPageID', 'Choose a Terms and Condisions Page', SiteTree::class)
+            );
+        }
+
+        $fields->addFieldToTab('Root.OnSubmission', TextField::create('SuccessTitle', 'Success Title'));
+        $fields->addFieldToTab('Root.OnSubmission', TextareaField::create('SuccessText', 'Success Text'));
+
+        $fields->addFieldToTab('Root.Images', UploadField::create('Image', 'Image'));
 
         return $fields;
     }

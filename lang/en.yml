@@ -1,17 +1,20 @@
 en:
-  ContactPage:
-    ERRORMESSAGE: 'Something went wrong with form submission. Please try again later.'
-    FIRSTNAME: 'First name'
-    FIRSTNAMEPLACEHOLDER: 'Your first name'
-    LASTNAME: 'Last name'
-    LASTNAMEPLACEHOLDER: 'Your last name'
-    EMAIL: 'Email'
-    EMAILPLACEHOLDER: 'Your email adress'
-    PHONE: 'Phone'
-    PHONEPLACEHOLDER: 'Your phone number'
-    DESCRIPTION: 'Message'
-    DESCRIPTIONPLACEHOLDER: 'Your message for us'
-    URL: 'Url'
-    COMMENT: 'Comment'
-    APPLY: 'Send'
-    FORMMESSAGEGOOD: 'Your inquiry has beed submitted. Thanks!'
+  Fractas\ContactPage\ContactInquiryForm:
+    APPLY: Send
+    COMMENTPLACEHOLDER: Comment
+    CONFIRMTERMSDESCRIPTION: 'Terms and conditions are stated on the <a href="{TermsPageLink}" target="_blank" title="Click here to read the terms and conditions">{TermsPageTitle}</a> page.'
+    CONFIRMTERMSLABEL: 'I agree to the terms and conditions'
+    DESCRIPTION: Message
+    DESCRIPTIONPLACEHOLDER: 'Your Message for us'
+    EMAIL: Email
+    EMAILPLACEHOLDER: 'Your Email address'
+    FIRSTNAME: 'First Name'
+    FIRSTNAMEPLACEHOLDER: 'Your First Name'
+    LASTNAME: 'Last Name'
+    LASTNAMEPLACEHOLDER: 'Your Last Name'
+    PHONE: Phone
+    PHONEPLACEHOLDER: 'Your Phone number'
+    SUBJECT: '[web] New contact inquiry - '
+    URLPLACEHOLDER: Url
+  Fractas\ContactPage\ContactPageController:
+    ERRORMESSAGE: 'Something went wrong with form submission. Please call us or try again later.'

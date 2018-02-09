@@ -1,18 +1,20 @@
 hr:
-  ContactPage:
-    ERRORMESSAGE: 'Dogodila se greška. Molimo probajte ponovno kasnije.'
+  Fractas\ContactPage\ContactInquiryForm:
+    APPLY: Pošalji
+    COMMENTPLACEHOLDER: Komentar
+    CONFIRMTERMSDESCRIPTION: 'Uvjeti korištenja mogu se pročitati na <a href="{TermsPageLink}" target="_blank" title="Klikni ovdje za detalje o uvjetima korišenja">{TermsPageTitle}</a>.'
+    CONFIRMTERMSLABEL: 'Slažem se sa uvjetima korištenja.'
+    DESCRIPTION: Poruka
+    DESCRIPTIONPLACEHOLDER: 'Vaša poruka za nas'
+    EMAIL: Email
+    EMAILPLACEHOLDER: Unesite Vašu email adresu'
     FIRSTNAME: 'Ime'
     FIRSTNAMEPLACEHOLDER: 'Unesite Vaše ime'
     LASTNAME: 'Prezime'
     LASTNAMEPLACEHOLDER: 'Unesite Vaše prezime'
-    EMAIL: 'Email'
-    EMAILPLACEHOLDER: 'Unesite Vašu email adresu'
-    PHONE: 'Telefon'
+    PHONE: Telefon
     PHONEPLACEHOLDER: 'Unesite Vaš broj telefona'
-    DESCRIPTION: 'Poruka'
-    DESCRIPTIONPLACEHOLDER: 'Vaša poruka za nas'
-    URL: 'Link'
-    COMMENT: 'Komentar'
-    APPLY: 'Pošalji'
-    FORMMESSAGEGOOD: 'Vaša poruka je poslana. Hvala!'
-    SUBJECT: '[web] novi kontakt upit'
+    SUBJECT: '[web] novi kontakt upit - '
+    URLPLACEHOLDER: Link
+  Fractas\ContactPage\ContactPageController:
+    ERRORMESSAGE: 'Dogodila se greška. Molimo probajte ponovno za koji trenutak.'

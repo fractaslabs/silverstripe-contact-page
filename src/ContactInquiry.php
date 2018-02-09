@@ -93,24 +93,24 @@ class ContactInquiry extends DataObject implements PermissionProvider
 
     public function getCMSFields()
     {
-        $fields = new FieldList(new TabSet('Root', new Tab('Main')));
+        $fields = FieldList::create(TabSet::create('Root', Tab::create('Main')));
         $fields->removeByName('Sort');
 
-        $dropFieldStatus = new DropdownField('Status', 'Status', self::get_contactinquiry_status_options());
+        $dropFieldStatus = DropdownField::create('Status', 'Status', self::get_contactinquiry_status_options());
 
         $tabName = singleton(self::class)->singular_name();
         $fields->addFieldsToTab('Root.Main', [
-            new HeaderField('HeaderDetails', "${tabName} details"),
+            HeaderField::create('HeaderDetails', "${tabName} details"),
             $dropFieldStatus,
-            new ReadOnlyField('FirstName', 'First Name'),
-            new ReadOnlyField('LastName', 'Last Name'),
-            new ReadOnlyField('Email', 'Email'),
-            new ReadOnlyField('Phone', 'Phone'),
-            new ReadOnlyField('Ref', 'Referal'),
-            new ReadOnlyField('Locale', 'Locale'),
-            new ReadOnlyField('Created', 'Created'),
-            new ReadOnlyField('Description', 'Description'),
-            new TextareaField('AdminComment', 'Admin Comment'),
+            ReadOnlyField::create('FirstName', 'First Name'),
+            ReadOnlyField::create('LastName', 'Last Name'),
+            ReadOnlyField::create('Email', 'Email'),
+            ReadOnlyField::create('Phone', 'Phone'),
+            ReadOnlyField::create('Ref', 'Referal'),
+            ReadOnlyField::create('Locale', 'Locale'),
+            ReadOnlyField::create('Created', 'Created'),
+            ReadOnlyField::create('Description', 'Description'),
+            TextareaField::create('AdminComment', 'Admin Comment'),
         ]);
 
         return $fields;
@@ -143,8 +143,8 @@ class ContactInquiry extends DataObject implements PermissionProvider
 
     public function providePermissions()
     {
-        return array(
-            'CONTACTINQUIRY_EDIT' => array(
+        return [
+            'CONTACTINQUIRY_EDIT' => [
                 'name' => _t(
                     __CLASS__.'.EditPermissionLabel',
                     'Edit a Contact Inquiry'
@@ -153,8 +153,8 @@ class ContactInquiry extends DataObject implements PermissionProvider
                     __CLASS__.'.Category',
                     'Contact Inquiries'
                 ),
-            ),
-            'CONTACTINQUIRY_DELETE' => array(
+            ],
+            'CONTACTINQUIRY_DELETE' => [
                 'name' => _t(
                     __CLASS__.'.DeletePermissionLabel',
                     'Delete a Contact Inquiry'
@@ -163,8 +163,8 @@ class ContactInquiry extends DataObject implements PermissionProvider
                     __CLASS__.'.Category',
                     'Contact Inquiries'
                 ),
-            ),
-            'CONTACTINQUIRY_CREATE' => array(
+            ],
+            'CONTACTINQUIRY_CREATE' => [
                 'name' => _t(
                     __CLASS__.'.CreatePermissionLabel',
                     'Create a Contact Inquiry'
@@ -173,7 +173,7 @@ class ContactInquiry extends DataObject implements PermissionProvider
                     __CLASS__.'.Category',
                     'Contact Inquiries'
                 ),
-            ),
-        );
+            ],
+        ];
     }
 }

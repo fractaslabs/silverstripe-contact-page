@@ -1,6 +1,5 @@
 it:
-  ContactPage:
-    ERRORMESSAGE: 'Qualcosa è andato storto con il modulo di presentazione. Riprovare più tardi.'
+  Fractas\ContactPage\ContactInquiryForm:
     FIRSTNAME: 'Nome'
     FIRSTNAMEPLACEHOLDER: 'Il tuo nome'
     LASTNAME: 'Cognome'
@@ -15,3 +14,5 @@ it:
     COMMENT: 'Commento'
     APPLY: 'Inviare'
     FORMMESSAGEGOOD: 'La tua richiesta è beed presentato. Grazie!'
+  Fractas\ContactPage\ContactPageController:
+    ERRORMESSAGE: 'Qualcosa è andato storto con il modulo di presentazione. Riprovare più tardi.'

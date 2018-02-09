@@ -1,5 +1,5 @@
 de:
-  ContactPage:
+  Fractas\ContactPage\ContactInquiryForm:
     ERRORMESSAGE: 'Etwas ist schief gelaufen mit Formular-Vorlage. Bitte versuchen Sie es später noch einmal.'
     FIRSTNAME: 'Vorname'
     FIRSTNAMEPLACEHOLDER: 'Ihr Vorname'
@@ -14,4 +14,5 @@ de:
     URL: 'Url'
     COMMENT: 'Kommentar'
     APPLY: 'Senden'
+  Fractas\ContactPage\ContactPageController:
     FORMMESSAGEGOOD: 'Ihre Anfrage wurde eingereicht beed. Vielen Dank!'

@@ -7,11 +7,14 @@ use SilverStripe\Control\Director;
 use SilverStripe\Control\Email\Email;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Convert;
+use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\EmailField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\HiddenField;
+use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
@@ -23,61 +26,88 @@ class ContactInquiryForm extends Form
     public function __construct(Controller $controller, $name)
     {
         $this->currController = $controller;
+        $termsPage = $this->currController->TermsPage();
+        $termsFields = LiteralField::create('', '');
 
-        $fields = new FieldList(
+        if ($termsPage->exists() && ContactPage::config()->get('use_terms_page')) {
+            $termsFields = CompositeField::create([
+                                CheckboxField::create('ConfirmTerms')
+                                    ->setTitle(_t(__CLASS__.'.CONFIRMTERMSLABEL', 'I agree to the terms and conditions')),
+                                CompositeField::create(
+                                    LiteralField::create(
+                                        'ConfirmTermsDescription',
+                                        _t(
+                                            __CLASS__.'.CONFIRMTERMSDESCRIPTION',
+                                            'Terms and conditions are stated on the <a href="{TermsPageLink}" target="_blank" title="Click here to read the terms and conditions">{TermsPageTitle}</a> page.',
+                                            '',
+                                            [
+                                                'TermsPageLink' => $termsPage->Link(),
+                                                'TermsPageTitle' => $termsPage->getTitle(),
+                                            ]
+                                        )
+                                    )
+                                )->addExtraClass('terms-desc'),
+                            ])->addExtraClass('terms-check');
+        }
+
+        $fields = FieldList::create(
             [
                 TextField::create('FirstName')
-                    ->setTitle(_t('ContactPage.FIRSTNAME', 'First Name'))
-                    ->setAttribute('placeholder', _t('ContactPage.FIRSTNAMEPLACEHOLDER', 'Your First Name'))
+                    ->setTitle(_t(__CLASS__.'.FIRSTNAME', 'First Name'))
+                    ->setAttribute('placeholder', _t(__CLASS__.'.FIRSTNAMEPLACEHOLDER', 'Your First Name'))
                     ->setAttribute('autocomplete', 'off')
                     ->setMaxLength(55),
 
                 TextField::create('LastName')
-                    ->setTitle(_t('ContactPage.LASTNAME', 'Last Name'))
-                    ->setAttribute('placeholder', _t('ContactPage.LASTNAMEPLACEHOLDER', 'Your Last Name'))
+                    ->setTitle(_t(__CLASS__.'.LASTNAME', 'Last Name'))
+                    ->setAttribute('placeholder', _t(__CLASS__.'.LASTNAMEPLACEHOLDER', 'Your Last Name'))
                     ->setAttribute('autocomplete', 'off')
                     ->setMaxLength(55),
 
                 EmailField::create('Email')
-                    ->setTitle(_t('ContactPage.EMAIL', 'Email'))
-                    ->setAttribute('placeholder', _t('ContactPage.EMAILPLACEHOLDER', 'Your Email address'))
+                    ->setTitle(_t(__CLASS__.'.EMAIL', 'Email'))
+                    ->setAttribute('placeholder', _t(__CLASS__.'.EMAILPLACEHOLDER', 'Your Email address'))
                     ->setAttribute('autocomplete', 'off')
                     ->setMaxLength(55),
 
                 TextField::create('Phone')
-                    ->setTitle(_t('ContactPage.PHONE', 'Phone'))
-                    ->setAttribute('placeholder', _t('ContactPage.PHONEPLACEHOLDER', 'Your Phone number'))
+                    ->setTitle(_t(__CLASS__.'.PHONE', 'Phone'))
+                    ->setAttribute('placeholder', _t(__CLASS__.'.PHONEPLACEHOLDER', 'Your Phone number'))
                     ->setAttribute('autocomplete', 'off')
                     ->setMaxLength(55),
 
                 TextareaField::create('Description')
-                    ->setTitle(_t('ContactPage.DESCRIPTION', 'Message'))
-                    ->setAttribute('placeholder', _t('ContactPage.DESCRIPTIONPLACEHOLDER', 'Your Message for us'))
+                    ->setTitle(_t(__CLASS__.'.DESCRIPTION', 'Message'))
+                    ->setAttribute('placeholder', _t(__CLASS__.'.DESCRIPTIONPLACEHOLDER', 'Your Message for us'))
                     ->setRows(6),
+                $termsFields,
+                CompositeField::create([
+                    TextField::create('Url')
+                        ->setTitle('')
+                        ->setMaxLength(55)
+                        ->setAttribute('style', 'display:none;')
+                        ->setAttribute('placeholder', _t(__CLASS__.'.URLPLACEHOLDER', 'Url'))
+                        ->setAttribute('autocomplete', 'off'),
 
-                TextField::create('Url')
-                    ->setTitle('')
-                    ->setMaxLength(55)
-                    ->setAttribute('style', 'display:none;')
-                    ->setAttribute('placeholder', _t('ContactPage.URLPLACEHOLDER', 'Url'))
-                    ->setAttribute('autocomplete', 'off'),
-
-                TextareaField::create('Comment')
-                    ->setTitle('')
-                    ->setAttribute('style', 'display:none;')
-                    ->setAttribute('placeholder', _t('ContactPage.COMMENTPLACEHOLDER', 'Comment'))
-                    ->setRows(6),
-
+                    TextareaField::create('Comment')
+                        ->setTitle('')
+                        ->setAttribute('style', 'display:none;')
+                        ->setAttribute('placeholder', _t(__CLASS__.'.COMMENTPLACEHOLDER', 'Comment'))
+                        ->setRows(6),
+                ])->addExtraClass('hidden'),
                 HiddenField::create('Ref')->setValue($this->currController->Title),
                 HiddenField::create('Locale')->setValue($this->currController->Locale),
             ]
         );
 
-        $actions = new FieldList(
-            FormAction::create('dosave', _t('ContactPage.APPLY', 'Send'))
+        $actions = FieldList::create(
+            FormAction::create('dosave', _t(__CLASS__.'.APPLY', 'Send'))
         );
 
-        $validator = new RequiredFields('FirstName', 'LastName', 'Email', 'Description');
+        $validator = RequiredFields::create('FirstName', 'LastName', 'Email', 'Description');
+        if ($termsPage->exists()) {
+            $validator = RequiredFields::create('FirstName', 'LastName', 'Email', 'Description', 'ConfirmTerms');
+        }
 
         parent::__construct($controller, $name, $fields, $actions, $validator);
 
@@ -114,19 +144,21 @@ class ContactInquiryForm extends Form
             return;
         }
 
-        $item = new ContactInquiry();
+        $item = ContactInquiry::create();
         $form->saveInto($item);
         $item->write();
 
         $mailFrom = $this->currController->MailFrom ? $this->currController->MailFrom : $SQLData['Email'];
         $mailTo = $this->currController->MailTo ? $this->currController->MailTo : Email::getAdminEmail();
-        $mailSubject = $this->currController->MailSubject ? ($this->currController->MailSubject.' - '.$SQLData['Ref']) : _t('ContactPage.SUBJECT', '[web] New contact inquiry - ').' '.$data['Ref'];
+        $mailSubject = $this->currController->MailSubject ?
+            ($this->currController->MailSubject.' - '.$SQLData['Ref']) :
+            _t(__CLASS__.'.SUBJECT', '[web] New contact inquiry - ').' '.$data['Ref'];
 
         /**
          * Send Email notification to site administrator or
          * to email specified in MailTo field.
          */
-        $email = new Email($mailFrom, $mailTo, $mailSubject);
+        $email = Email::create($mailFrom, $mailTo, $mailSubject);
         $email->setReplyTo($SQLData['Email']);
         $email->setHTMLTemplate('ContactInquiryEmail');
         $email->setData($SQLData);

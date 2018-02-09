@@ -7,10 +7,10 @@ use SilverStripe\View\Requirements;
 
 class ContactPageController extends PageController
 {
-    private static $allowed_actions = array(
+    private static $allowed_actions = [
         'success',
         'error',
-    );
+    ];
 
     public function init()
     {
@@ -21,6 +21,6 @@ class ContactPageController extends PageController
 
     public function ErrorMessage()
     {
-        return _t('ContactPage.ERRORMESSAGE', 'Something went wrong with form submission. Please call us or try again later.');
+        return _t(__CLASS__.'.ERRORMESSAGE', 'Something went wrong with form submission. Please call us or try again later.');
     }
 }
