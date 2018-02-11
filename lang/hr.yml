@@ -7,7 +7,7 @@ hr:
     DESCRIPTION: Poruka
     DESCRIPTIONPLACEHOLDER: 'Vaša poruka za nas'
     EMAIL: Email
-    EMAILPLACEHOLDER: Unesite Vašu email adresu'
+    EMAILPLACEHOLDER: 'Unesite Vašu email adresu'
     FIRSTNAME: 'Ime'
     FIRSTNAMEPLACEHOLDER: 'Unesite Vaše ime'
     LASTNAME: 'Prezime'
