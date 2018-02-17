@@ -3,7 +3,6 @@
 namespace Fractas\ContactPage;
 
 use SilverStripe\Control\Controller;
-use SilverStripe\Control\Director;
 use SilverStripe\Control\Email\Email;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Convert;
@@ -139,7 +138,7 @@ class ContactInquiryForm extends Form
 
         // Most probably spam - terminate silently
         if ('' !== $SQLData['Comment'] || '' !== $SQLData['Url']) {
-            Director::redirect(Director::baseURL().$this->URLSegment.'/success');
+            $this->currController->redirect($this->currController->Link().'success');
 
             return;
         }
