@@ -1,4 +1,5 @@
 .message.required,
+.message.validation,
 .error .help-block {
 	color: red;
 	font-size: 11px;
