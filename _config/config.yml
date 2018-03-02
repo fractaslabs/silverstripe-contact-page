@@ -1,7 +1,5 @@
 ---
 Name: contact-page
-Before: 'mysite/*'
-After: ['framework/*','cms/*']
 ---
 SilverStripe\CMS\Controllers\ContentController:
   extensions:
