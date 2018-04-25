@@ -100,7 +100,7 @@ class ContactInquiryForm extends Form
         );
 
         $actions = FieldList::create(
-            FormAction::create('dosave', _t(__CLASS__.'.APPLY', 'Send'))
+            FormAction::create('dosave', _t(__CLASS__.'.APPLY', 'Send'))->setUseButtonTag(true)
         );
 
         $validator = RequiredFields::create('FirstName', 'LastName', 'Email', 'Description');
