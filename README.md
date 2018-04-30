@@ -33,10 +33,11 @@ The master branch of this module is currently aiming for SilverStripe 4.x compat
 - Visit yoursite.com/admin/pages/ and create Contact Page.
 - On newly created Contact Page set up Mail From (or leave blank) and Mail To adresses and enter Mail Subject for sending email notification on mail specified on Mail To field.
 - On tab "On Submision" enter validation Success Title and Success Text, optionaly add Image or Content.
+- Optionaly you can add an checkbox for "Terms of service page" and link to it
 
 ## User guide
 
-User guide in [available here](https://github.com/fractaslabs/silverstripe-contact-page/blob/master/docs/en/userguide.md)
+For more informations about usage with screenshoots user guide is [available here](https://github.com/fractaslabs/silverstripe-contact-page/blob/master/docs/en/userguide.md)
 
 ## Bugtracker
 
