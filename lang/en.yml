@@ -2,8 +2,8 @@ en:
   Fractas\ContactPage\ContactInquiryForm:
     APPLY: Send
     COMMENTPLACEHOLDER: Comment
-    CONFIRMTERMSDESCRIPTION: 'Terms and conditions are stated on the <a href="{TermsPageLink}" target="_blank" title="Click here to read the terms and conditions">{TermsPageTitle}</a> page.'
-    CONFIRMTERMSLABEL: 'I agree to the terms and conditions'
+    CONFIRMTERMSDESCRIPTION: 'By clicking Send, you agree to our <a href="{TermsPageLink}" target="_blank" title="{TermsPageTitle}">{TermsPageTitle}</a> and that you have read our <a href="{PrivacyPageLink}" target="_blank" title="{PrivacyPageTitle}">{PrivacyPageTitle}</a>'
+    CONFIRMTERMSLABEL: 'Check here to indicate that you have read and agree to the terms'
     DESCRIPTION: Message
     DESCRIPTIONPLACEHOLDER: 'Your Message for us'
     EMAIL: Email

@@ -26,27 +26,24 @@ class ContactInquiryForm extends Form
     {
         $this->currController = $controller;
         $termsPage = $this->currController->TermsPage();
+        $privacyPage = $this->currController->PrivacyPage();
         $termsFields = LiteralField::create('', '');
 
         if ($termsPage->exists() && ContactPage::config()->get('use_terms_page')) {
             $termsFields = CompositeField::create([
-                                CheckboxField::create('ConfirmTerms')
-                                    ->setTitle(_t(__CLASS__.'.CONFIRMTERMSLABEL', 'I agree to the terms and conditions')),
-                                CompositeField::create(
-                                    LiteralField::create(
-                                        'ConfirmTermsDescription',
-                                        _t(
+                                    CheckboxField::create('ConfirmTerms')
+                                        ->setTitle(_t(__CLASS__.'.CONFIRMTERMSLABEL', 'Check here to indicate that you have read and agree to the terms'))
+                                        ->setDescription(_t(
                                             __CLASS__.'.CONFIRMTERMSDESCRIPTION',
-                                            'Terms and conditions are stated on the <a href="{TermsPageLink}" target="_blank" title="Click here to read the terms and conditions">{TermsPageTitle}</a> page.',
-                                            '',
+                                            'By clicking Send, you agree to our <a href="{TermsPageLink}" target="_blank" title="{TermsPageTitle}">{TermsPageTitle}</a> and that you have read our <a href="{PrivacyPageLink}" target="_blank" title="{PrivacyPageTitle}">{PrivacyPageTitle}</a>',
                                             [
                                                 'TermsPageLink' => $termsPage->Link(),
                                                 'TermsPageTitle' => $termsPage->getTitle(),
+                                                'PrivacyPageLink' => $privacyPage->Link(),
+                                                'PrivacyPageTitle' => $privacyPage->getTitle(),
                                             ]
-                                        )
-                                    )
-                                )->addExtraClass('terms-desc'),
-                            ])->addExtraClass('terms-check');
+                                        )),
+                                ])->addExtraClass('terms-check');
         }
 
         $fields = FieldList::create(

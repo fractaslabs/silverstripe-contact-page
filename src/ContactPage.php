@@ -23,6 +23,7 @@ class ContactPage extends Page
     private static $description = 'Page with contact Form and contact details';
 
     private static $use_terms_page = false;
+    private static $use_privacy_page = false;
 
     private static $db = [
         'MailFrom' => 'Varchar(255)',
@@ -36,6 +37,7 @@ class ContactPage extends Page
     private static $has_one = [
         'Image' => Image::class,
         'TermsPage' => SiteTree::class,
+        'PrivacyPage' => SiteTree::class,
     ];
 
     private static $table_name = 'ContactPage';
@@ -64,8 +66,15 @@ class ContactPage extends Page
 
         if ($this->config()->get('use_terms_page')) {
             $fields->addFieldToTab(
-                'Root.TermsPage',
+                'Root.TermsPages',
                 $treedropdownfield = TreeDropdownField::create('TermsPageID', 'Choose a Terms and Condisions Page', SiteTree::class)
+            );
+        }
+
+        if ($this->config()->get('use_privacy_page')) {
+            $fields->addFieldToTab(
+                'Root.TermsPages',
+                $treedropdownfield = TreeDropdownField::create('PrivacyPageID', 'Choose a Security and Privacy Page', SiteTree::class)
             );
         }
 
