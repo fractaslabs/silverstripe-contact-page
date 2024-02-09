@@ -37,5 +37,11 @@
         "psr-4": {
             "Fractas\\ContactPage\\": "src/"
         }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "silverstripe/vendor-plugin": true
+        }
     }
 }
